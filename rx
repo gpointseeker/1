@@ -121,3 +121,5 @@ Extrair domínio de URLs:
 https?://(www\.)?([^/]+)
 Correspondência: "http://www.example.com" ou "https://example.com"
 Grupo capturado: "example.com"
+mac addree
+  m/[0-9,A-F]{2}[\:,\-][0-9,A-F]{2}[\:,\-][0-9,A-F]{2}[\:,\-][0-9,A-F]{2}[\:,\-][0-9,A-F]{2}[\:,\-][0-9,A-F]{2}/ig
