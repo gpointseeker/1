@@ -1,0 +1,32 @@
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+
+#verificar se o argumento tem param
+if (@ARGV !=2 ){
+  die("paramentros invalidos \n");
+ }
+
+if (! -f $ARGV[0]){
+ die("p1 - não é ficheiro \n");
+ }
+
+if ( -e $ARGV[1]){
+  die("p2 - ficheiro já existe \n");
+ }
+
+my $fichin = $ARGV[0];
+my $fichout = $ARGV[1];
+
+open(FICHIN , "<$fichin" )|| die ("ERRO IN de abertura de leitura:$!\n");
+##  my @fich = <FICHIN>;
+open(FICHOUT , ">$fichout" )|| die ("ERRO OUT de abertura de leitura:$!\n");
+
+    my $linha = <FICHIN>;
+    while($linha ne "") {
+          print FICHOUT $linha;
+          $linha= <FICHIN>;
+    };
+
+close(FICHIN);
+close(FICHOUT);
