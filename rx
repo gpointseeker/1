@@ -1,0 +1,123 @@
+ 1) m/a/ # encontra 'a'  
+( 2) m/[ab]/ # encontra 'a' ou 'b'  
+( 3) m/[A-Z]/ # encontra todas as letras maiúsculas  
+( 4) m/[0-9]/ # encontra números  
+( 5) m/\d/ # encontra números - como em (4)  
+( 6) m/\D/ # encontra tudo exceto números  
+( 7) m/[0-9]\-/ # encontra números ou o sinal de menos  
+( 8) m/[\[\]]/ # encontra tudo que estiver delimitado por parênteses retos [ ]  
+( 9) m/[a-zA-Z0-9_]/ # encontra letras, números ou sinal de sublinhado  
+(10) m/[\w]/ # encontra letras, números ou sinal de sublinhado - como em (9)  
+(11) m/[\W]/ # encontra tudo, exceto letras, números e sinal de sublinhado  
+(12) m/[\r]/ # encontra o sinal de retorno (típico do DOS)  
+(13) m/[\n]/ # encontra o sinal para quebra de linha  
+(14) m/[\t]/ # encontra o sinal de tabulação (tab)  
+(15) m/[\f]/ # encontra o sinal para quebra de página  
+(16) m/[\s]/ # encontra o sinal de espaço assim como os sinais referidos de (12) a (15) 
+(17) m/[\S]/ # encontra tudo, exceto sinal de espaço e os de (12) a (15)  
+(18) m/[äöüÄÖÜ]/ # encontra todos os carateres com acentuação dupla  
+(19) m/[^a-zA-Z]/ # encontra tudo que não contiver letras  
+(20) m/[ab]/s # encontra 'a' ou 'b' também em várias linhas  
+(21) m/asa/ # encontra 'asa' - também 'casa' ou 'casamento'  
+(22) m/asa?/ # encontra 'asa', 'casa', 'casamento' e também 'as' e 'asilo'  
+(23) m/a./ # encontra 'as' e 'ar'  
+(24) m/a+/ # encontra 'a' e 'aa' e 'aaaaa' - quantos existirem  
+(25) m/a*/ # encontra 'a' e 'aa' e 'aaaaa' e 'b' - nenhum ou quantos 'a' existirem  
+(26) m/ca.a/ # encontra 'casa' e 'caça', mas não 'cansa'  
+(27) m/ca.+a/ # encontra 'casa', 'caça' e 'cansa'  
+(28) m/ca.?a/ # encontra 'casa', 'caça' e 'caso'  
+(29) m/x{10,20}/ # encontra sequências de 10 a 20 'x'  
+(30) m/x{10,}/ # encontra sequências de 10 ou mais 'x'  
+(31) m/x.{2}y/ # só encontra 'xxxy'  
+(32) m/Clara\b/ # encontra 'Clara' mas não 'Clarinha'  
+(33) m/\bassa/ # encontra 'assa' ou 'assado' mas não 'massa'  
+(34) m/\bassa\b/ # encontra 'assa' mas não 'assado' e nem 'massa'  
+(35) m/\bassa\B/ # encontra 'assado' mas não 'assa' e nem 'massa'  
+(36) m/^Julia/ # encontra 'Julia' apenas no início do contexto da pesquisa  
+(37) m/Helena$/ # encontra 'Helena' apenas no final do contexto da pesquisa  
+(38) m/^\s*$/ # encontra linhas constituídas apenas por sinais vazios ou similares  
+(39) m/$Nome/ # encontra o conteúdo da variável escalar $Nome  
+(40) m/asa/s # encontra 'asa', também em várias linhas 
+(41) m/a|b/ # encontra 'a' ou 'b' - idêntico a m/[ab]/  
+(42) m/com|sem/ # encontra 'com' e 'descompensar', como também 'sem' e 'semântica
+
+########## ex ##############
+
+#!/usr/bin/perl -w 
+use strict; 
+my $str = "01-05-2013"; 
+$str =~ m/^(\d\d)-(\d+)-(\d{4})$/; 
+print("$1 \n");   # mostra no terminal: 01 
+print("$2 \n");   # mostra no terminal: 05 
+print("$3 \n");   # mostra no terminal: 2013 
+
+##################################
+
+A expressão regular (regex) é uma sequência de caracteres que define um padrão de pesquisa. É uma ferramenta poderosa usada em programação para busca e manipulação de textos. Vamos explorar os principais componentes e funcionalidades das expressões regulares, incluindo grupos, caracteres especiais, quantificadores e delimitadores.
+
+Caracteres Especiais
+. (ponto): Corresponde a qualquer caractere, exceto uma nova linha.
+
+Exemplo: a.b corresponde a "aab", "acb", "a1b", etc.
+^ (circunflexo): Indica o início da string.
+
+Exemplo: ^abc corresponde a "abc" apenas se estiver no início da string.
+$ (sifrão): Indica o final da string.
+
+Exemplo: abc$ corresponde a "abc" apenas se estiver no final da string.
+[] (colchetes): Define um conjunto de caracteres, correspondendo a qualquer um deles.
+
+Exemplo: [abc] corresponde a "a", "b" ou "c".
+[^] (colchetes com circunflexo): Define um conjunto negado de caracteres, correspondendo a qualquer caractere que não esteja no conjunto.
+
+Exemplo: [^abc] corresponde a qualquer caractere, exceto "a", "b" ou "c".
+\ (barra invertida): Escapa caracteres especiais ou indica uma sequência especial.
+
+Exemplo: \d corresponde a qualquer dígito (equivalente a [0-9]).
+Quantificadores
+*: Corresponde a zero ou mais ocorrências do caractere ou grupo anterior.
+
+Exemplo: a* corresponde a "", "a", "aa", "aaa", etc.
++: Corresponde a uma ou mais ocorrências do caractere ou grupo anterior.
+
+Exemplo: a+ corresponde a "a", "aa", "aaa", etc.
+?: Corresponde a zero ou uma ocorrência do caractere ou grupo anterior.
+
+Exemplo: a? corresponde a "" ou "a".
+{n}: Corresponde a exatamente n ocorrências do caractere ou grupo anterior.
+
+Exemplo: a{3} corresponde a "aaa".
+{n,m}: Corresponde a entre n e m ocorrências do caractere ou grupo anterior.
+
+Exemplo: a{2,4} corresponde a "aa", "aaa" ou "aaaa".
+Grupos e Captura
+() (parênteses): Define um grupo e captura a correspondência.
+
+Exemplo: (abc) corresponde a "abc" e captura essa correspondência.
+| (pipe): Operador "ou" lógico.
+
+Exemplo: a|b corresponde a "a" ou "b".
+(?:...): Define um grupo, mas não captura a correspondência.
+
+Exemplo: (?:abc) corresponde a "abc" mas não captura a correspondência.
+Delimitadores
+Em muitas linguagens, expressões regulares são delimitadas por caracteres específicos como / ou ".
+
+Exemplo: /abc/i corresponde a "abc" case-insensitivamente.
+
+Exemplo: r"\d+" corresponde a um ou mais dígitos.
+Exemplos Completos
+Encontrar e capturar números de telefone:
+
+(\d{3})-(\d{3})-(\d{4})
+Correspondência: "123-456-7890"
+Grupos capturados: "123", "456", "7890"
+Validar um endereço de e-mail:
+
+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}
+Correspondência: "user@example.com"
+Extrair domínio de URLs:
+
+https?://(www\.)?([^/]+)
+Correspondência: "http://www.example.com" ou "https://example.com"
+Grupo capturado: "example.com"
