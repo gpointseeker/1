@@ -30,3 +30,35 @@ open(FICHOUT , ">$fichout" )|| die ("ERRO OUT de abertura de leitura:$!\n");
 
 close(FICHIN);
 close(FICHOUT);
+
+#####
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+#ordenaçao de arrays
+
+my @arr =(1,10,50,3,100,20,7,15);
+my @arr1 =(1, "estg", 100, "ipleira",2,"Leiria",3);
+
+my @arr_ord = sort(@arr);
+#ordena em formato ascii
+print ("@arr_ord \n");
+
+my @arr_num = sort{$a <=> $b} @arr;
+#ordenar em formato  numerica
+print("@arr_num \n");
+
+push(@arr_ord,300);#acescenta no fim
+print ("@arr_ord \n");
+
+my $var = pop(@arr_ord);
+#retira o ultimo  elemento
+print ("@arr_ord  var=$var \n");
+
+unshift(@arr_ord, 123);
+#acrescenta no inicio
+print ("@arr_ord \n");
+
+$var = shift(@arr_ord);
+#retira o primeiro  elemento
+print ("@arr_ord  var=$var \n");
