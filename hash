@@ -1,0 +1,22 @@
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+
+#hash
+
+my %h;
+my %h1=(2400 => "Leiria", 2495 => "Fatima", 2005 =>"Santarem");
+
+
+print("Valor de 2400  é --> $h1{2400}\n");
+
+#adicionar
+$h{"Segunda"}=1;
+$h{"Terça"}=2;
+
+foreach my $i (keys(%h1)){
+print ("Valor de $i è --->$h1{ $i}\n");
+}
+ foreach my $i (keys(%h)){
+ print ("Valor de $i è --->$h{ $i}\n");
+ }
