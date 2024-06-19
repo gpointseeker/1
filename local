@@ -1,0 +1,12 @@
+zone "domain.local" {
+        type master;
+        file "/etc/bind/bd/as.local.bd";
+};
+zone "domain1.local"{
+        type master;
+        file "/etc/bind/bd/as1.local.bd";
+};
+zone "100.168.192.in-addr.arpa"{
+        type master;
+        file "/etc/bind/bd/192.168.100.bd";
+};
