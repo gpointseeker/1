@@ -38,6 +38,6 @@ sudo nano /etc/rsyslog.conf
 sudo nano /etc/logrotate.d/auth
 
 tar -czvf logrotate_config.tar.gz -C ~/ logrotate_config
-
+history -d 1223-1226
 find / -name "myfile.txt" 2> /dev/null
 find /var/log -size +5k 2>/dev/null
