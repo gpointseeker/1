@@ -62,3 +62,16 @@ print ("@arr_ord \n");
 $var = shift(@arr_ord);
 #retira o primeiro  elemento
 print ("@arr_ord  var=$var \n");
+
+#############
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+
+my @fich =`cat /etc/passwd `;
+print ("@fich \n");
+
+my @fich1 =`cat /etc/passwd | cut -f1 -d":" | sort `;
+my $ne = length(@fich1);
+my $ne1 = @fich1;
+print ("@fich1 \n\n $ne \n\n\ $ne1 \n ");
